@@ -5,7 +5,8 @@ import pandas as pd
 import re
 import matplotlib.pyplot as plt
 
-model = LpProblem(name='insurance_profit', sense=LpMaximize)
+
+model = LpProblem(name='insurance_commission', sense=LpMaximize)
 
 # Definition of decision variables
 x = {i: LpVariable(name=f'x{i}', lowBound=0) for i in range(1, 10)}
@@ -27,6 +28,7 @@ model += (x[8] <= y[8] * T, "x8_constraint")
 model += (x[9] <= y[9] * T, "x9_constraint")
 model += (y[1] + y[2] + y[3] + y[4] + y[5] + y[6] + y[7] + y[8] + y[9] <= 1, "y_constraint")
 
+print('MODEL', model)
 
 # Set the objective
 model += 47 * x[1] + 90 * x[2] + 210 * x[3] + 59 * x[4] + 239 * x[5] + 95 * x[6] + 52 * x[7] + 33 * x[8] + 50 * x[9]
