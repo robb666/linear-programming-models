@@ -5,6 +5,32 @@ import pandas as pd
 import re
 import matplotlib.pyplot as plt
 
+Categories = ['MTPL', 'AC', 'FULL', 'HOUSE', 'BUSINESS', 'LIABILITY', 'TRAVEL', 'LIFE', 'OTHER']
+
+mean_profit = {
+    'MTPL': 47,
+    'AC': 90,
+    'FULL': 210,
+    'HOUSE': 59,
+    'BUSINESS': 239,
+    'LIABILITY': 95,
+    'TRAVEL': 52,
+    'LIFE': 33,
+    'OTHER': 50,
+}
+
+mean_time = {
+    'MTPL': 15,
+    'AC': 40,
+    'FULL': 40,
+    'HOUSE': 20,
+    'BUSINESS': 60,
+    'LIABILITY': 20,
+    'TRAVEL': 15,
+    'LIFE': 30,
+    'OTHER': 45,
+}
+
 
 model = LpProblem(name='insurance_commission', sense=LpMaximize)
 
