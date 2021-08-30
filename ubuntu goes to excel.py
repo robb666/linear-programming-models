@@ -31,6 +31,17 @@ df = pd.DataFrame(ws)
 new_header = df.iloc[1]
 df = df[2:]
 df.columns = new_header
-print(df['Kod'].str.extract(r'(pocztowy)'))
-print()
+lodz = []
+inne = []
+for kod in df['kod miasto']:
+    if str(kod).startswith('9'):
+        lodz.append(kod)
+    else:
+        inne.append(kod)
+
+print(lodz)
+print(inne)
+print(len(lodz))
+print(len(inne))
+
 
