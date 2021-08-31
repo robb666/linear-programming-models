@@ -10,14 +10,30 @@ pd.set_option('display.width', None)
 
 location = "/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Agent baza/2014 BAZA MAGRO.xlsx"
 
-ws = pd.read_excel(location, index_col=None, na_values=['na'], usecols="F:Z,AV")
+ws = pd.read_excel(location, index_col=None, na_values=['NA'], usecols="A:DB")
 df = pd.DataFrame(ws)
 
 new_header = df.iloc[1]
-df = df[2:]
+df = df[3:]
 df.columns = new_header
 df = df.rename(index=lambda x: x + 2)
 
-kwoty = df.loc[df['Rozlicz skł. OWCA'] == 'Robert']['Przypis'].sum()
+print(df.head())
 
-print(kwoty)
+OC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
+                 (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
+                 (df['Ryzyko'] == 'OC')]
+
+przychod_OC_2020 = int(OC_2020['MAGRO z Inkasa'].sum())
+
+ilosc_polis = OC_2020['Przypis'].count()
+
+srednia_OC = int(przychod_OC_2020 / ilosc_polis)
+
+print(przychod_OC_2020)
+print(ilosc_polis)
+print(srednia_OC)
+
+
+
+
