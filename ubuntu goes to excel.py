@@ -19,7 +19,7 @@ new_header = df.iloc[1]
 df = df[2:]
 df.columns = new_header
 
-print(df)
+print(df.head(100))
 
 
 # lodz = []
