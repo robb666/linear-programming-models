@@ -1,5 +1,7 @@
+
 import sys
 import pandas as pd
+from pulp import *
 
 print(sys.version)
 print(pd.__version__)
@@ -18,22 +20,17 @@ df = df[3:]
 df.columns = new_header
 df = df.rename(index=lambda x: x + 2)
 
-print(df.head())
+print(df.head(300))
 
 OC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
                  (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
                  (df['Ryzyko'] == 'OC')]
 
-przychod_OC_2020 = int(OC_2020['MAGRO z Inkasa'].sum())
+AC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
+                 (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
+                 (df['Ryzyko'] == 'AC')]
 
-ilosc_polis = OC_2020['Przypis'].count()
-
-srednia_OC = int(przychod_OC_2020 / ilosc_polis)
-
-print(przychod_OC_2020)
-print(ilosc_polis)
-print(srednia_OC)
-
-
-
+OCAC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
+                   (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
+                   (df['Ryzyko'].isin(['OCAC', 'OC AC']))]
 
