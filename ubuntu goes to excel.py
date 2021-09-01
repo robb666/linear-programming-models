@@ -22,15 +22,3 @@ df = df.rename(index=lambda x: x + 2)
 
 print(df.head(300))
 
-OC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
-                 (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
-                 (df['Ryzyko'] == 'OC')]
-
-AC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
-                 (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
-                 (df['Ryzyko'] == 'AC')]
-
-OCAC_2020 = df.loc[(df['Rok przypisu'] == '20_') &
-                   (df['Rozlicz skł. OWCA'].isin(['MAGRO', 'Robert'])) &
-                   (df['Ryzyko'].isin(['OCAC', 'OC AC']))]
-
