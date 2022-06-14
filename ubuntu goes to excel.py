@@ -16,6 +16,7 @@ ws = pd.read_excel(location, index_col=None, na_values=['NA'], usecols="A:DB")
 df = pd.DataFrame(ws)
 
 new_header = df.iloc[1]
+
 df = df[3:]
 df.columns = new_header
 df = df.rename(index=lambda x: x + 2)
